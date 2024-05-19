@@ -23,4 +23,11 @@
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="387dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pindah halaman"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="435dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
