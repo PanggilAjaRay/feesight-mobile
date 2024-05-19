@@ -30,4 +30,11 @@
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="435dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="terserah"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="504dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
