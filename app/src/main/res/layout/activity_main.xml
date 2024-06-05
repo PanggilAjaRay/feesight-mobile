@@ -7,41 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Feesight!!!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/poppinsbold"
+        android:text="FeeSight"
+        android:textSize="32sp"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="310dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pindah halaman"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="387dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pindah halaman"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="435dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="terserah"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="504dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aku"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="504dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
