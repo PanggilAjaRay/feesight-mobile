@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.feesight_mobile", appContext.packageName)
+        assertEquals("com.example.freesight", appContext.packageName)
     }
 }
