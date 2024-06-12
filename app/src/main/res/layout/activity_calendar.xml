@@ -30,11 +30,12 @@
         tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="405dp"
         android:id="@+id/item"
-        android:layout_height="318dp"
+        android:layout_width="405dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_income"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        tools:listitem="@layout/item_income" />
 </androidx.constraintlayout.widget.ConstraintLayout>

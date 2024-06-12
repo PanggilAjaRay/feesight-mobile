@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "421008230605",
+    "project_id": "feesight-9c0e5",
+    "storage_bucket": "feesight-9c0e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421008230605:android:f1b144f10990e7428b4184",
+        "android_client_info": {
+          "package_name": "com.example.feesight_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCoo2f3-Al08Q8auAT6RdEEXYgBu_LhOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

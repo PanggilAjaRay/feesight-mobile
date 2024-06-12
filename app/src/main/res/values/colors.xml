@@ -2,6 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="SecondaryColor">#55BBAF</color>
-    <color name="primaryColor">#50C2C9</color>
+    <color name="hijau">#4CAF50</color>
+    <color name="abu">#1E1E1E</color>
+    <color name="red">#FF4D4D</color>
+    <color name="ijo">#4FE828</color>
+    <color name="blue">#3448F9</color>
 </resources>
