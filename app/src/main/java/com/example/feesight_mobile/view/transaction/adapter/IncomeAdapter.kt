@@ -1,10 +1,11 @@
-package com.example.feesight_mobile.view.Transaction.Adapter
+package com.example.feesight_mobile.view.transaction.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.feesight_mobile.R
 import com.example.feesight_mobile.databinding.ItemIncomeBinding
 import com.example.feesight_mobile.model.IncomeItem
+
 
 class IncomeAdapter(private val incomeList: List<IncomeItem>) : RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder>() {
 

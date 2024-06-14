@@ -1,0 +1,113 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menu_recommendation">
+
+    <ImageView
+        android:id="@+id/rectangle_3"
+        android:layout_width="344dp"
+        android:layout_height="152dp"
+        android:background="@drawable/rectangle_3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="118dp" />
+
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/bitcoin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/crypto"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintStart_toEndOf="@id/image_view"
+        app:layout_constraintTop_toTopOf="@id/image_view"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/text_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:maxWidth="200dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:text="@string/crypto_desc"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintStart_toEndOf="@id/image_view"
+        app:layout_constraintTop_toTopOf="@id/image_view"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/rectangle_4"
+        android:layout_width="344dp"
+        android:layout_height="152dp"
+        android:background="@drawable/rectangle_3"
+        app:layout_constraintTop_toBottomOf="@id/rectangle_3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/image_view2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="312dp"
+        android:src="@drawable/growth"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/invest"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/image_view2"
+        app:layout_constraintTop_toTopOf="@+id/image_view2" />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:text="@string/invest_desc"
+        android:textSize="12dp"
+        android:maxWidth="200dp"
+        app:layout_constraintLeft_toRightOf="@+id/image_view2"
+        app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.ui.assets.AssetFragment">
+
+    <View
+        android:id="@+id/rectangle_4"
+        android:layout_width="420dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/money_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="325dp"
+        android:layout_marginTop="40dp"
+        android:gravity="top"
+        android:text="50.000"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/rectangle_4"
+        app:layout_constraintTop_toTopOf="@id/rectangle_4" />
+
+    <TextView
+        android:id="@+id/money_liabilities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="40dp"
+        android:gravity="top"
+        android:text="50.000"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="14sp"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/rectangle_4"
+        app:layout_constraintTop_toTopOf="@id/rectangle_4" />
+
+    <TextView
+        android:id="@+id/money_assets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:gravity="top"
+        android:text="50.000"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="14sp"
+        android:textColor="@color/ijo"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/rectangle_4"
+        app:layout_constraintTop_toTopOf="@id/rectangle_4" />
+
+    <TextView
+        android:id="@+id/assets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="14sp"
+        android:gravity="top"
+        android:text="Assets"
+        app:layout_constraintStart_toStartOf="@id/rectangle_4"
+        app:layout_constraintTop_toTopOf="@id/rectangle_4" />
+
+    <TextView
+        android:id="@+id/liabilities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="16dp"
+        android:gravity="top"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="14sp"
+        android:text="Liabilities"
+        app:layout_constraintStart_toStartOf="@id/rectangle_4"
+        app:layout_constraintTop_toTopOf="@id/rectangle_4" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="16dp"
+        android:gravity="top"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="14sp"
+        android:text="Total"
+        app:layout_constraintStart_toStartOf="@id/rectangle_4"
+        app:layout_constraintTop_toTopOf="@id/rectangle_4" />
+
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="420dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/rectangle_"
+        android:layout_width="425dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="316dp"
+        android:background="@drawable/rectangle_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:gravity="top"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:text="Bank"
+        app:layout_constraintStart_toStartOf="@id/rectangle_"
+        app:layout_constraintTop_toTopOf="@id/rectangle_" />
+
+    <TextView
+        android:id="@+id/bank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:gravity="top"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:text="Assets"
+        app:layout_constraintStart_toStartOf="@id/rectangle_1"
+        app:layout_constraintTop_toTopOf="@id/rectangle_1" />
+
+    <TextView
+        android:id="@+id/another_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="top"
+        android:text="50.000"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="14sp"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_"
+        app:layout_constraintTop_toTopOf="@id/rectangle_" />
+
+    <TextView
+        android:id="@+id/money_bank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="top"
+        android:text="50.000"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="14sp"
+        android:textColor="@color/ijo"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_1"
+        app:layout_constraintTop_toTopOf="@id/rectangle_1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

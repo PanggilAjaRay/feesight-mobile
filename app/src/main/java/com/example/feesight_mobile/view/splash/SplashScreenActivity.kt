@@ -1,4 +1,4 @@
-package com.example.feesight_mobile.view.Splash
+package com.example.feesight_mobile.view.splash
 
 import android.content.Context
 import android.content.Intent
@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.feesight_mobile.R
-import com.example.feesight_mobile.view.Landingpage.LandingpageActivity
-import com.example.feesight_mobile.view.MainActivity
+import com.example.feesight_mobile.view.landingpage.LandingpageActivity
+import com.example.feesight_mobile.view.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
     private val splashTime: Long = 3000
@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (isLoggedIn()) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         } else {
             setContentView(R.layout.activity_splash_screen)

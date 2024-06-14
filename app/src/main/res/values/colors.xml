@@ -2,9 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="hijau">#4CAF50</color>
+    <color name="green">#4CAF50</color>
     <color name="abu">#1E1E1E</color>
     <color name="red">#FF4D4D</color>
-    <color name="ijo">#4FE828</color>
-    <color name="blue">#3448F9</color>
+    <color name="ijo">#5FD142</color>
+    <color name="blue">#2936AA</color>
 </resources>

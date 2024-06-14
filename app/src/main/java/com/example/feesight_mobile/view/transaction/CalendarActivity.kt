@@ -1,13 +1,14 @@
-package com.example.feesight_mobile.view.Transaction
+package com.example.feesight_mobile.view.transaction
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.feesight_mobile.databinding.ActivityCalendarBinding
 import com.example.feesight_mobile.model.IncomeItem
-import com.example.feesight_mobile.view.MainActivity
-import com.example.feesight_mobile.view.Transaction.Adapter.IncomeAdapter
+import com.example.feesight_mobile.view.home.HomeActivity
+import com.example.feesight_mobile.view.transaction.adapter.IncomeAdapter
+import com.example.feesight_mobile.view.transaction.expenseincome.ExpenseIncomeActivity
+import com.example.feesight_mobile.databinding.ActivityCalendarBinding
 
 class CalendarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCalendarBinding
@@ -33,7 +34,10 @@ class CalendarActivity : AppCompatActivity() {
         binding.item.adapter = incomeAdapter
 
         binding.imageButton.setOnClickListener{
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
+        binding.imageButtonAdd.setOnClickListener{
+            startActivity(Intent(this,ExpenseIncomeActivity::class.java))
         }
     }
 }

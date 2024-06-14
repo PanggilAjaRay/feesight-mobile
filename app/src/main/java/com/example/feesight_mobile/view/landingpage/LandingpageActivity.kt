@@ -1,11 +1,11 @@
-package com.example.feesight_mobile.view.Landingpage
+package com.example.feesight_mobile.view.landingpage
 
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.feesight_mobile.databinding.ActivityLandingpageBinding
-import com.example.feesight_mobile.view.MainActivity
+import com.example.feesight_mobile.view.home.HomeActivity
 import com.example.feesight_mobile.view.login.LoginActivity
 import com.example.feesight_mobile.view.login.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +18,7 @@ class LandingpageActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (firebaseAuth.currentUser != null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.feesight_mobile.databinding.ActivityMainBinding
-import com.example.feesight_mobile.view.Transaction.CalendarActivity
+import com.example.feesight_mobile.view.transaction.CalendarActivity
 import com.example.feesight_mobile.view.login.LoginActivity
 import com.example.feesight_mobile.model.IncomeItem
-import com.example.feesight_mobile.view.Transaction.Adapter.IncomeAdapter
+import com.example.feesight_mobile.view.transaction.adapter.IncomeAdapter
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {

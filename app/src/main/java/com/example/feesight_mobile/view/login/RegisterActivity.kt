@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.feesight_mobile.databinding.ActivityRegisterBinding
-import com.example.feesight_mobile.view.MainActivity
+import com.example.feesight_mobile.view.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
 
@@ -18,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (firebaseAuth.currentUser != null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 
@@ -70,7 +70,7 @@ class RegisterActivity : AppCompatActivity() {
                     user!!.updateProfile(userUpdate)
                         .addOnCompleteListener {
                             prosesdialog.dismiss()
-                            startActivity(Intent(this, MainActivity::class.java))
+                            startActivity(Intent(this, HomeActivity::class.java))
                         }
                         .addOnFailureListener { error ->
                             Toast.makeText(this, error.localizedMessage, Toast.LENGTH_SHORT).show()

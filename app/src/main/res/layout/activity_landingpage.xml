@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Landingpage.LandingpageActivity">
+    tools:context=".view.landingpage.LandingpageActivity">
 
     <ImageView
         android:id="@+id/imagelogo"
@@ -32,11 +32,12 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="188dp"
-        android:text="Login"
+        android:text="@string/login"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/hijau"
+        android:backgroundTint="@color/green"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
@@ -44,9 +45,10 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/hijau"
-        android:text="Register"
+        android:backgroundTint="@color/green"
+        android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".view.Transaction.CalendarActivity">
+    tools:context=".view.transaction.CalendarActivity">
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -29,10 +29,24 @@
         tools:layout_editor_absoluteY="16dp"
         tools:ignore="MissingConstraints" />
 
+    <ImageButton
+        android:id="@+id/imageButtonAdd"
+        android:layout_width="44dp"
+        android:layout_height="34dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:layout_marginStart="300dp"
+        app:layout_constraintStart_toEndOf="@id/imageButton"
+        app:layout_constraintTop_toTopOf="@id/imageButton"
+        app:srcCompat="@drawable/baseline_add_24"
+
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item"
         android:layout_width="405dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
