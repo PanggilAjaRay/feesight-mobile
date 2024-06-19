@@ -11,7 +11,7 @@
         android:id="@+id/tvhalo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="120dp"
         android:text="HELLO AGAIN !"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="#000000"

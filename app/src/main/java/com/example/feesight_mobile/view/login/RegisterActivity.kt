@@ -1,23 +1,35 @@
 package com.example.feesight_mobile.view.login
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.feesight_mobile.data.request.LoginRequest
+import com.example.feesight_mobile.data.request.RegisterRequest
+import com.example.feesight_mobile.data.response.LoginResponse
+import com.example.feesight_mobile.data.response.RegisterResponse
+import com.example.feesight_mobile.data.retrofit.ApiConfig
 import com.example.feesight_mobile.databinding.ActivityRegisterBinding
 import com.example.feesight_mobile.view.home.HomeActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.userProfileChangeRequest
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     lateinit var prosesdialog: ProgressDialog
-    var firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onStart() {
         super.onStart()
-        if (firebaseAuth.currentUser != null) {
+        ApiConfig.initialize(this) // Inisialisasi ApiConfig dengan konteks
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", null)
+        if (token != null) {
             startActivity(Intent(this, HomeActivity::class.java))
         }
     }
@@ -27,60 +39,81 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.textView6.setOnClickListener{
-            startActivity(Intent(this,LoginActivity::class.java))
+        binding.textView6.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         prosesdialog = ProgressDialog(this)
         prosesdialog.setTitle("Signing UP")
         prosesdialog.setMessage("PLEASE WAIT ...")
 
-        binding.btnsignup.setOnClickListener{
+        binding.btnsignup.setOnClickListener {
             val nama = binding.ednama.text.toString()
             val email = binding.editTextTextEmailAddress.text.toString()
             val password = binding.editTextTextPassword.text.toString()
             val confirm = binding.editTextTextPassword2.text.toString()
             if (nama.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirm.isNotEmpty()) {
                 if (password == confirm) {
-                    prosesregister()
-                }else{
-                    Toast.makeText(this,"PASSWORD MUST MATCH !!!",Toast.LENGTH_SHORT).show()
+                    prosesregister(nama, email, password)
+                } else {
+                    Toast.makeText(this, "PASSWORD MUST MATCH !!!", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                Toast.makeText(this,"PLEASE FILL IN ALL THE FIELDS !!!",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "PLEASE FILL IN ALL THE FIELDS !!!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun prosesregister(){
-        val email = binding.editTextTextEmailAddress.text.toString()
-        val password = binding.editTextTextPassword.text.toString()
-        val nama = binding.ednama.text.toString()
-
+    private fun prosesregister(nama: String, email: String, password: String) {
         prosesdialog.show()
 
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener { task->
-                if (task.isSuccessful){
-                    val userUpdate = userProfileChangeRequest {
-                        displayName = nama
-                    }
-                    val user = task.result.user
-                    user!!.updateProfile(userUpdate)
-                        .addOnCompleteListener {
-                            prosesdialog.dismiss()
-                            startActivity(Intent(this, HomeActivity::class.java))
-                        }
-                        .addOnFailureListener { error ->
-                            Toast.makeText(this, error.localizedMessage, Toast.LENGTH_SHORT).show()
-                        }
-                }else{
-                    prosesdialog.dismiss()
+        val registerRequest = RegisterRequest(email, password, nama)
+
+        lifecycleScope.launch {
+            try {
+                val registerResponse: Response<RegisterResponse> = withContext(Dispatchers.IO) {
+                    ApiConfig.getApiService().register(registerRequest).execute()
                 }
+
+                if (registerResponse.isSuccessful) {
+                    proseslogin(email, password)
+                } else {
+                    prosesdialog.dismiss()
+                    Toast.makeText(this@RegisterActivity, "Registration failed", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                prosesdialog.dismiss()
+                Toast.makeText(this@RegisterActivity, e.localizedMessage, Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { error2 ->
-                Toast.makeText(this, error2.localizedMessage, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun proseslogin(email: String, password: String) {
+        val loginRequest = LoginRequest(email, password)
+
+        lifecycleScope.launch {
+            try {
+                val loginResponse: Response<LoginResponse> = withContext(Dispatchers.IO) {
+                    ApiConfig.getApiService().login(loginRequest).execute()
+                }
+
+                if (loginResponse.isSuccessful) {
+                    val token = loginResponse.body()?.token
+                    val name = loginResponse.body()?.displayName
+                    Log.d("NAME_LOG", name ?: "No Name Provided")
+                    val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    sharedPreferences.edit().putString("token", token).apply()
+                    sharedPreferences.edit().putString("name", name).apply()
+                    prosesdialog.dismiss()
+                    startActivity(Intent(this@RegisterActivity, HomeActivity::class.java))
+                } else {
+                    prosesdialog.dismiss()
+                    Toast.makeText(this@RegisterActivity, "Login failed", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                prosesdialog.dismiss()
+                Toast.makeText(this@RegisterActivity, e.localizedMessage, Toast.LENGTH_SHORT).show()
             }
+        }
     }
 }

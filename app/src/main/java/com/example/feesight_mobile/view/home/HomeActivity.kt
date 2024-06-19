@@ -1,6 +1,7 @@
 package com.example.feesight_mobile.view.home
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -16,6 +17,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d("TEST_LOG", "MASUK")
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

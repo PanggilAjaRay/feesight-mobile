@@ -16,6 +16,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        buildConfigField("String", "BASE_URL", "\"https://feesight-xublwmakla-et.a.run.app/\"")
+        buildConfigField("String", "API_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJqMVZEREZlZmZpYzZ0SklUWWltSmthb2JpTU0yIiwiZW1haWwiOiJwYWlqb0BlbWFpbC5jb20iLCJpYXQiOjE3MTg1MjI3NzksImV4cCI6MTcyMzcwNjc3OX0.Xlz-1xiLh7qeZZBoM_NyToXreGBie6Z0CcZWPaLlM2c\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,6 +43,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
 }
@@ -74,4 +77,9 @@ dependencies {
 
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }
