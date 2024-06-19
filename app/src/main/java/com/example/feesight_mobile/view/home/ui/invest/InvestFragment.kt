@@ -28,12 +28,12 @@ class InvestFragment : Fragment() {
 
         val imageView: ImageView = view.findViewById(R.id.rectangle_4)
         imageView.setOnClickListener {
-            val intent = Intent(activity, ListCrypto::class.java)
+            val intent = Intent(activity, ListInvest::class.java)
             startActivity(intent)
         }
         val imageViewCrypto: ImageView = view.findViewById(R.id.rectangle_3)
         imageViewCrypto.setOnClickListener {
-            val intent = Intent(activity, ListInvest::class.java)
+            val intent = Intent(activity, ListCrypto::class.java)
             startActivity(intent)
         }
     }

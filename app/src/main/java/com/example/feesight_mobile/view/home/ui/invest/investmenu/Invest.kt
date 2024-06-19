@@ -6,6 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Invest(
     val name: String,
-    val percentage: String,
+    val price: String,
     val photo: Int
 ): Parcelable
