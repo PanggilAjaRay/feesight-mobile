@@ -17,7 +17,7 @@
 
 
     <style name="Theme.Custom.Toolbar" parent="Widget.Material3.Toolbar">
-        <item name="android:background">@color/green</item>
+        <item name="android:background">@color/white</item>
     </style>
     <style name="Theme.FeeSight" parent="Base.Theme.FeeSight" />
 </resources>

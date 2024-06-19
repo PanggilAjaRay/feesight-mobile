@@ -22,7 +22,7 @@ class ListInvest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityListInvestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         fetchInvestData()
     }
 

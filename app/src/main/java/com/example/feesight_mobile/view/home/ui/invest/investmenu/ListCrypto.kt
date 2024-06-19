@@ -21,6 +21,7 @@ class ListCrypto : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityListCryptoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         fetchCryptoData()
     }

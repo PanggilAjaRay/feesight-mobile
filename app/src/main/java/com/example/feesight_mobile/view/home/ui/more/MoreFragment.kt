@@ -37,7 +37,7 @@ class MoreFragment : Fragment() {
             insets
         }
         binding.logOut04.setOnClickListener {
-            Toast.makeText(requireContext(), "ImageView clicked!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Logout Success!", Toast.LENGTH_SHORT).show()
             // Tambahkan aksi lain yang ingin Anda lakukan saat ImageView diklik
             auth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java).apply {

@@ -1,8 +1,10 @@
 package com.example.feesight_mobile.view.transaction.expenseincome
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,25 +14,35 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.example.feesight_mobile.R
-import com.google.android.material.textfield.TextInputEditText
+import com.example.feesight_mobile.data.response.AddTransactionResponse
+import com.example.feesight_mobile.data.response.TransactionRequest
+import com.example.feesight_mobile.data.retrofit.ApiConfig
+import com.example.feesight_mobile.databinding.FragmentExpenseBinding
+import com.example.feesight_mobile.view.transaction.CalendarActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.Calendar
 
 class ExpenseFragment : Fragment() {
 
+    private var _binding: FragmentExpenseBinding? = null
+    private val binding get() = _binding!!
+
     private var selectedCategory: String? = null
     private var selectedImageView: ImageView? = null
     private var selectedTextView: TextView? = null
+    private var selectedDate: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_expense, container, false)
+    ): View {
+        _binding = FragmentExpenseBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         // Handle ImageView click to navigate to IncomeFragment
-        val imageView2 = view.findViewById<ImageView>(R.id.imageView2)
-        imageView2.setOnClickListener {
+        binding.imageView2.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, IncomeFragment())
                 .addToBackStack(null)
@@ -38,19 +50,21 @@ class ExpenseFragment : Fragment() {
         }
 
         // Handle TextInputEditText click to show DatePickerDialog
-        val dateEditText = view.findViewById<TextInputEditText>(R.id.dateEditText)
-        dateEditText.setOnClickListener {
-            showDatePickerDialog(dateEditText)
+        binding.dateEditText.setOnClickListener {
+
+            showDatePickerDialog()
+
+
         }
 
         // Set OnClickListener for each category ImageView
         val categories = listOf(
-            Pair(view.findViewById<ImageView>(R.id.iv_meal), view.findViewById<TextView>(R.id.tv_categorize_1)),
-            Pair(view.findViewById<ImageView>(R.id.iv_shopping), view.findViewById<TextView>(R.id.tv_categorize_2)),
-            Pair(view.findViewById<ImageView>(R.id.iv_travel), view.findViewById<TextView>(R.id.tv_categorize_3)),
-            Pair(view.findViewById<ImageView>(R.id.iv_health), view.findViewById<TextView>(R.id.tv_categorize_7)),
-            Pair(view.findViewById<ImageView>(R.id.iv_fashion), view.findViewById<TextView>(R.id.tv_categorize_8)),
-            Pair(view.findViewById<ImageView>(R.id.iv_expense_other), view.findViewById<TextView>(R.id.tv_categorize_9))
+            Pair(binding.ivMeal, binding.tvCategorize1),
+            Pair(binding.ivShopping, binding.tvCategorize2),
+            Pair(binding.ivTravel, binding.tvCategorize3),
+            Pair(binding.ivHealth, binding.tvCategorize7),
+            Pair(binding.ivFashion, binding.tvCategorize8),
+            Pair(binding.ivExpenseOther, binding.tvCategorize9)
         )
 
         for (category in categories) {
@@ -59,10 +73,20 @@ class ExpenseFragment : Fragment() {
             }
         }
 
+        // Set OnClickListener for sendButton
+        binding.btnExpense.setOnClickListener {
+            Toast.makeText(requireContext(), "Successful expense money added!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireActivity(), CalendarActivity::class.java)
+            startActivity(intent)
+            // Akhiri Fragment saat ini agar tidak kembali ke halaman sebelumnya setelah Intent ke MainActivity
+            requireActivity().finish()
+            sendDataToApi()
+        }
+
         return view
     }
 
-    private fun showDatePickerDialog(dateEditText: TextInputEditText) {
+    private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -72,8 +96,9 @@ class ExpenseFragment : Fragment() {
             requireContext(),
             { _, selectedYear, selectedMonth, selectedDay ->
                 // Format the selected date and set it to the EditText
-                val formattedDate = "${selectedDay}/${selectedMonth + 1}/${selectedYear}"
-                dateEditText.setText(formattedDate)
+                val formattedDate = "${selectedYear}-${selectedMonth + 1}-${selectedDay}"
+                binding.dateEditText.setText(formattedDate)
+                selectedDate = formattedDate
             },
             year, month, day
         )
@@ -105,5 +130,49 @@ class ExpenseFragment : Fragment() {
 
         // Show a Toast message
         Toast.makeText(requireContext(), "Selected: $selectedCategory", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun sendDataToApi() {
+        val amount = binding.totalEditText.text.toString().toIntOrNull()
+        val type = "expense"  // Menetapkan tipe transaksi sebagai "expense"
+        val category = selectedCategory // Menggunakan selectedCategory atau default "Other" jika null
+        val date = selectedDate
+
+        if (amount == null || date == null || category == null) {
+            Toast.makeText(requireContext(), "Data yang dimasukkan masih kosong !", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val transaction = TransactionRequest(
+            amount = amount,
+            type = type,
+            category = category,
+            date = date
+        )
+
+        ApiConfig.getApiService().createTransaction(transaction).enqueue(object : Callback<AddTransactionResponse> {
+            override fun onResponse(call: Call<AddTransactionResponse>, response: Response<AddTransactionResponse>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        val logMessage = "Transaction performed: ${it.message}, ID: ${it.id}"
+                        Log.d("TransactionLog", logMessage) // Menyimpan log dengan level DEBUG
+                    }
+                } else {
+                    Log.e(
+                        "TransactionLog",
+                        "Failed to perform transaction"
+                    ) // Jika respons tidak berhasil
+                }
+            }
+                override fun onFailure(call: Call<AddTransactionResponse>, t: Throwable) {
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
