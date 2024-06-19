@@ -8,10 +8,14 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @GET("user/transactions")
     fun getTransactions(): Call<TransactionsResponse>
+
+    @GET("user/transactions")
+    fun getTransactionsByDate(@Query("date") date: String): Call<TransactionsResponse>
 
     @POST("predict")
     fun predict(@Body request: Map<String, String>): Call<InvestResponse>
