@@ -40,9 +40,10 @@ class CalendarActivity : AppCompatActivity() {
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
             calendar.set(year, month, dayOfMonth)
-            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val sdf = SimpleDateFormat("yyyy-M-dd", Locale.getDefault())
             val selectedDate = sdf.format(calendar.time)
 
+            Log.d("DATE_LOG", selectedDate)
             // Memanggil fungsi fetchTransactionsByDate dengan tanggal yang dipilih
             fetchTransactionsByDate(selectedDate)
         }

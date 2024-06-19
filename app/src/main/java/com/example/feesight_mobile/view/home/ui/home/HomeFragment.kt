@@ -1,5 +1,6 @@
 package com.example.feesight_mobile.view.home.ui.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.feesight_mobile.data.response.TransactionsResponse
 import com.example.feesight_mobile.data.response.TransactionsResponseItem
 import com.example.feesight_mobile.data.retrofit.ApiConfig
 import com.example.feesight_mobile.databinding.FragmentHomeBinding
+import com.example.feesight_mobile.view.home.HomeActivity
 import com.example.feesight_mobile.view.login.LoginActivity
 import com.example.feesight_mobile.view.transaction.CalendarActivity
 import com.example.feesight_mobile.view.transaction.adapter.IncomeAdapter
@@ -37,13 +39,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
+//        auth = FirebaseAuth.getInstance()
+//        val currentUser = auth.currentUser
+//        if (currentUser == null) {
+//            startActivity(Intent(activity, LoginActivity::class.java))
+//            activity?.finish()
+//        } else {
+//            binding.userName.text = currentUser.displayName
+//            binding.dateIcon.setOnClickListener {
+//                startActivity(Intent(activity, CalendarActivity::class.java))
+//            }
+//        }
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", null)
+        val name = sharedPreferences.getString("name", null)
+        Log.d("TOKEN_LOG", token.toString())
+        if (token == null) {
             startActivity(Intent(activity, LoginActivity::class.java))
             activity?.finish()
         } else {
-            binding.userName.text = currentUser.displayName
+            binding.userName.text = name
             binding.dateIcon.setOnClickListener {
                 startActivity(Intent(activity, CalendarActivity::class.java))
             }

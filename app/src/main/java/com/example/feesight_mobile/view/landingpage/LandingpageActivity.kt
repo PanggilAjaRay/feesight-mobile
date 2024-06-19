@@ -17,6 +17,7 @@ class LandingpageActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
         if (firebaseAuth.currentUser != null) {
             startActivity(Intent(this, HomeActivity::class.java))
         }

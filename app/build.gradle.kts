@@ -16,7 +16,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "BASE_URL", "\"https://feesight-xublwmakla-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://vjsmk85h-3000.asse.devtunnels.ms/\"")
         buildConfigField("String", "API_KEY", "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJqMVZEREZlZmZpYzZ0SklUWWltSmthb2JpTU0yIiwiZW1haWwiOiJwYWlqb0BlbWFpbC5jb20iLCJpYXQiOjE3MTg1MjI3NzksImV4cCI6MTcyMzcwNjc3OX0.Xlz-1xiLh7qeZZBoM_NyToXreGBie6Z0CcZWPaLlM2c\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
