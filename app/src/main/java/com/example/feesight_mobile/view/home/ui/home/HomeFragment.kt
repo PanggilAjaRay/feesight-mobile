@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.feesight_mobile.data.response.BalanceResponse
 import com.example.feesight_mobile.data.response.TransactionsResponse
 import com.example.feesight_mobile.data.response.TransactionsResponseItem
 import com.example.feesight_mobile.data.retrofit.ApiConfig
@@ -21,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -39,17 +43,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        auth = FirebaseAuth.getInstance()
-//        val currentUser = auth.currentUser
-//        if (currentUser == null) {
-//            startActivity(Intent(activity, LoginActivity::class.java))
-//            activity?.finish()
-//        } else {
-//            binding.userName.text = currentUser.displayName
-//            binding.dateIcon.setOnClickListener {
-//                startActivity(Intent(activity, CalendarActivity::class.java))
-//            }
-//        }
         val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("token", null)
         val name = sharedPreferences.getString("name", null)
@@ -65,6 +58,7 @@ class HomeFragment : Fragment() {
         }
         setupRecyclerView()
         fetchTransactions()
+        fetchBalance()
     }
 
     private fun setupRecyclerView() {
@@ -92,6 +86,30 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<TransactionsResponse>, t: Throwable) {
+                Log.e("HomeFragment", "API call failed", t)
+            }
+        })
+    }
+
+    private fun fetchBalance() {
+        val apiService = ApiConfig.getApiService()
+
+        val dateFormat = SimpleDateFormat("yyyy-M-dd", Locale.getDefault())
+        val currentDate = dateFormat.format(Date())
+
+        val call = apiService.getBalance(currentDate)
+        call.enqueue(object : Callback<BalanceResponse> {
+            override fun onResponse(call: Call<BalanceResponse>, response: Response<BalanceResponse>) {
+                if (response.isSuccessful) {
+                    val balance = response.body()?.balance ?: "RP.0.00"
+                    binding.balanceAmount.text = balance
+                    Log.d("HomeFragment", "Balance fetched successfully: $balance")
+                } else {
+                    Log.e("HomeFragment", "Error response code: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<BalanceResponse>, t: Throwable) {
                 Log.e("HomeFragment", "API call failed", t)
             }
         })

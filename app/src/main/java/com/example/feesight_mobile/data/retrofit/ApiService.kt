@@ -3,6 +3,7 @@ package com.example.feesight_mobile.data.retrofit
 import com.example.feesight_mobile.data.request.LoginRequest
 import com.example.feesight_mobile.data.request.RegisterRequest
 import com.example.feesight_mobile.data.response.AddTransactionResponse
+import com.example.feesight_mobile.data.response.BalanceResponse
 import com.example.feesight_mobile.data.response.InvestResponse
 import com.example.feesight_mobile.data.response.LoginResponse
 import com.example.feesight_mobile.data.response.RegisterResponse
@@ -34,4 +35,7 @@ interface ApiService {
     // Endpoint untuk login
     @POST("login")
     fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
+
+    @GET("user/balance")
+    fun getBalance(@Query("toDate") toDate: String): Call<BalanceResponse>
 }

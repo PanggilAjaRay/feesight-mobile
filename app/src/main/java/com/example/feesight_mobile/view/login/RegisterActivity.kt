@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -99,9 +100,10 @@ class RegisterActivity : AppCompatActivity() {
                 if (loginResponse.isSuccessful) {
                     val token = loginResponse.body()?.token
                     val name = loginResponse.body()?.displayName
+                    Log.d("NAME_LOG", name ?: "No Name Provided")
                     val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
                     sharedPreferences.edit().putString("token", token).apply()
-                    sharedPreferences.edit().putString("name", name)
+                    sharedPreferences.edit().putString("name", name).apply()
                     prosesdialog.dismiss()
                     startActivity(Intent(this@RegisterActivity, HomeActivity::class.java))
                 } else {
