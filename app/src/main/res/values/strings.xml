@@ -106,8 +106,8 @@
     <string name="insert_money">Masukan Uang</string>
     <string name="insert_note">Masukan Catatan</string>
     <string name="transactions_empty">Tidak ada data transaksi</string>
-    <string name="remaining_balance">Your remaining balance</string>
-    <string name="project_balance">Your project balance</string>
+    <string name="remaining_balance">Day Balance</string>
+    <string name="project_balance">Spare Money</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="transaction">Transaction</string>
 </resources>

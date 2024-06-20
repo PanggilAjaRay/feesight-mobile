@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.feesight_mobile.data.response.BalanceResponse
 import com.example.feesight_mobile.data.response.TransactionsResponse
 import com.example.feesight_mobile.data.response.TransactionsResponseItem
 import com.example.feesight_mobile.data.retrofit.ApiConfig
@@ -46,6 +47,7 @@ class CalendarActivity : AppCompatActivity() {
             Log.d("DATE_LOG", selectedDate)
             // Memanggil fungsi fetchTransactionsByDate dengan tanggal yang dipilih
             fetchTransactionsByDate(selectedDate)
+            fetchBalance(selectedDate)
         }
     }
 
@@ -77,4 +79,27 @@ class CalendarActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun fetchBalance(selectedDate: String) {
+        val apiService = ApiConfig.getApiService()
+
+        val call = apiService.getBalance(selectedDate)
+        call.enqueue(object : Callback<BalanceResponse> {
+            override fun onResponse(call: Call<BalanceResponse>, response: Response<BalanceResponse>) {
+                if (response.isSuccessful) {
+                    val balance = response.body()?.balance ?: "RP.0.00"
+                    binding.balance.text = "Rp. $balance"
+                    Log.d("HomeFragment", "Balance fetched successfully: $balance")
+                } else {
+                    Log.e("HomeFragment", "Error response code: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<BalanceResponse>, t: Throwable) {
+                Log.e("HomeFragment", "API call failed", t)
+            }
+        })
+    }
+
 }
+
