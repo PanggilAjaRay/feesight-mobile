@@ -1,10 +1,7 @@
-## ScanCare
+## Feesight-Mobile
 
-<p align="center">
-  <img width="240" src="">
-</p>
-
-You can also click [this](https://drive.google.com/file/d/1tsu883Emsm0NK-eQVPzZJIhnBRNnX199/view?usp=sharing) to watch the demo
+https://github.com/Aflinxh/feesight-mobile/assets/86412842/3b1ebc5f-4f75-4bb1-a5f2-90583d250702
+<!-- You can also click [this](https://drive.google.com/file/d/1tsu883Emsm0NK-eQVPzZJIhnBRNnX199/view?usp=sharing) to watch the demo -->
 
 
 ## How to install 🔧
