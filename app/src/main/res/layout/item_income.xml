@@ -39,7 +39,6 @@
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/tv_item_description"
-            android:textColor="@color/black"
             android:hint="title" />
 
         <TextView
@@ -52,7 +51,6 @@
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/tv_item_amount"
-            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:text="Keterangan" />
 
@@ -79,6 +77,6 @@
             android:text="Date"
             android:textSize="12sp"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/black" />
+             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

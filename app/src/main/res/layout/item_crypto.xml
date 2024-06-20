@@ -47,7 +47,6 @@
             card_view:layout_constraintStart_toEndOf="@+id/image_crypto_list"
             card_view:layout_constraintTop_toTopOf="@+id/image_crypto_list"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="@color/black"
             card_view:layout_constraintVertical_bias="0.439"
             android:text="@string/crypto"/>
 

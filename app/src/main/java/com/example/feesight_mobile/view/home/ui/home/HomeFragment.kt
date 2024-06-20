@@ -77,7 +77,14 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     val transactions = response.body() ?: emptyList()
                     transactionsList.clear()
-                    transactionsList.addAll(transactions)
+                    if (transactions.isNotEmpty()) {
+                        transactionsList.addAll(transactions)
+                        binding.recyclerIncome.visibility = View.VISIBLE
+                        binding.tvNoData.visibility = View.GONE
+                    } else {
+                        binding.recyclerIncome.visibility = View.GONE
+                        binding.tvNoData.visibility = View.VISIBLE
+                    }
                     transactionsAdapter.notifyDataSetChanged()
                     Log.d("HomeFragment", "Data fetched successfully: $transactions")
                 } else {
@@ -102,7 +109,7 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<BalanceResponse>, response: Response<BalanceResponse>) {
                 if (response.isSuccessful) {
                     val balance = response.body()?.balance ?: "RP.0.00"
-                    binding.balanceAmount.text = balance
+                    binding.balanceAmount.text = "Rp. $balance"
                     Log.d("HomeFragment", "Balance fetched successfully: $balance")
                 } else {
                     Log.e("HomeFragment", "Error response code: ${response.code()}")

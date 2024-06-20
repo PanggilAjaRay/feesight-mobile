@@ -11,12 +11,12 @@
         android:id="@+id/settings_01"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="266dp"
-        android:src="@drawable/settings_01"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="264dp"
         android:clipToOutline="true"
+        android:src="@drawable/baseline_settings_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/mail_05"
@@ -24,7 +24,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="175dp"
         android:layout_marginTop="266dp"
-        android:src="@drawable/mail_05"
+        android:src="@drawable/baseline_alternate_email_24"
         android:clipToOutline="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -36,7 +36,7 @@
         android:layout_marginStart="305dp"
         android:layout_marginEnd="45dp"
         android:layout_marginTop="266dp"
-        android:src="@drawable/log_out_04"
+        android:src="@drawable/baseline_logout_24"
         android:clipToOutline="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

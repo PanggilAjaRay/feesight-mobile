@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.feesight_mobile.databinding.FragmentMoreBinding
+import com.example.feesight_mobile.view.home.ui.more.theme.ThemeActivity
 import com.example.feesight_mobile.view.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -44,6 +45,11 @@ class MoreFragment : Fragment() {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             })
             activity?.finish()
+        }
+        binding.settings01.setOnClickListener {
+            val intent = Intent(requireContext(), ThemeActivity::class.java)
+            startActivity(intent)
+            true
         }
 
     }

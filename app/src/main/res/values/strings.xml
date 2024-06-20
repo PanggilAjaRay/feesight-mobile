@@ -105,4 +105,9 @@
     <string name="create_a_new_account">Create A New Account?</string>
     <string name="insert_money">Masukan Uang</string>
     <string name="insert_note">Masukan Catatan</string>
+    <string name="transactions_empty">Tidak ada data transaksi</string>
+    <string name="remaining_balance">Day Balance</string>
+    <string name="project_balance">Spare Money</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="transaction">Transaction</string>
 </resources>

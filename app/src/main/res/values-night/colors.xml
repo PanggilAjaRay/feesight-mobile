@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vector_light_color">@color/blue_bell</color>
+    <color name="box_color">@color/midnight_blue</color>
+</resources>
