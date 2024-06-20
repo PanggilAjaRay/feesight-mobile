@@ -1,7 +1,7 @@
 ## ScanCare
 
 <p align="center">
-  <img width="240" src="https://github.com/ScanCareApp/ScanCare/blob/Development/assets/demo%20percepat.gif">
+  <img width="240" src="">
 </p>
 
 You can also click [this](https://drive.google.com/file/d/1tsu883Emsm0NK-eQVPzZJIhnBRNnX199/view?usp=sharing) to watch the demo
