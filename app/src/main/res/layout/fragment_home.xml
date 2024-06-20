@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".view.home.ui.home.HomeFragment">
 
     <!-- CardView for User Info -->
@@ -47,7 +46,7 @@
                     android:text="HELLO,"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_light"
-                    android:textColor="@android:color/black" />
+                   />
 
                 <TextView
                     android:id="@+id/user_name"
@@ -56,7 +55,7 @@
                     android:text="User Name"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@android:color/black" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- Added Search Icon -->
@@ -73,7 +72,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/date"/>
+                android:src="@drawable/baseline_calendar_month_light"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -224,8 +223,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Transaction"
-        android:textColor="@color/black"
+        android:text="@string/transaction"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -233,6 +231,7 @@
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardIncome" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_income"
         android:layout_width="match_parent"
@@ -240,4 +239,21 @@
         app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_income"/>
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/transactions_empty"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_regular"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

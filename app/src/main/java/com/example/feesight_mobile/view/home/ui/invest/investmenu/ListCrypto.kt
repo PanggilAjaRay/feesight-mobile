@@ -13,6 +13,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class ListCrypto : AppCompatActivity() {
     private lateinit var binding: ActivityListCryptoBinding
@@ -28,7 +31,9 @@ class ListCrypto : AppCompatActivity() {
 
     private fun fetchCryptoData() {
         showLoading(true)
-        val request = mapOf("end_date" to "2024-06-19")
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = dateFormat.format(Calendar.getInstance().time) //agar tanggal selalu real-time
+        val request = mapOf("end_date" to currentDate)
         val apiService = ApiConfig.getApiService()
         val call = apiService.predict(request)
 

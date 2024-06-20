@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Expenses"
+        android:textColor="@color/black"
         android:fontFamily="@font/poppins_medium"
         android:textSize="13sp"
         app:layout_constraintTop_toTopOf="@+id/imageView1"
@@ -67,7 +68,6 @@
         android:layout_height="wrap_content"
         android:text="Date"
         android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_date"
-        app:startIconDrawable="@drawable/baseline_calendar_month_24"
+        app:startIconDrawable="@drawable/baseline_calendar_month_light"
         tools:alpha="100">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -107,7 +107,6 @@
         android:layout_height="wrap_content"
         android:text="Total"
         android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textSize="16sp"
@@ -150,7 +149,6 @@
         android:layout_height="wrap_content"
         android:text="Categorize"
         android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textSize="16sp"
@@ -303,7 +301,6 @@
         android:layout_height="wrap_content"
         android:text="Note"
         android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textSize="16sp"

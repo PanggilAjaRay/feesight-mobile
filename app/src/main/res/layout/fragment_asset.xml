@@ -26,7 +26,6 @@
         android:text="100.000"
         android:fontFamily="@font/poppins_regular"
         android:textSize="14sp"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/rectangle_4"
         app:layout_constraintTop_toTopOf="@id/rectangle_4" />
@@ -127,7 +126,6 @@
         android:gravity="top"
         android:fontFamily="@font/poppins_medium"
         android:textSize="14sp"
-        android:textColor="@color/black"
         android:text="Bank"
         app:layout_constraintStart_toStartOf="@id/rectangle_"
         app:layout_constraintTop_toTopOf="@id/rectangle_" />
@@ -141,7 +139,6 @@
         android:gravity="top"
         android:fontFamily="@font/poppins_medium"
         android:textSize="14sp"
-        android:textColor="@color/black"
         android:text="Assets"
         app:layout_constraintStart_toStartOf="@id/rectangle_1"
         app:layout_constraintTop_toTopOf="@id/rectangle_1" />

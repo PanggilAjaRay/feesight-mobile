@@ -8,4 +8,10 @@
     <color name="ijo">#5FD142</color>
     <color name="blue">#2936AA</color>
     <color name="colorPrimaryDark">#FF7D29</color>
+    <color name="gulf_blue">#222831</color>
+    <color name="midnight_blue">#31363F</color>
+    <color name="gray_blue">#76ABAE</color>
+    <color name="blue_bell">#EEEEEE</color>
+    <color name="vector_light_color">#FF000000</color>
+    <color name="box_color">#B8FFFFFF</color>
 </resources>
