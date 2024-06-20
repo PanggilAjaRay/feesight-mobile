@@ -1,4 +1,4 @@
-## ScanCare
+## feesight-mobile
 
 <p align="center">
   <img width="240" src="">
@@ -12,6 +12,7 @@ Clone this repository and import into **Android Studio**
 ```bash
 git clone https://github.com/ScanCareApp/ScanCare.git
 ```
+https://github.com/Aflinxh/feesight-mobile/assets/86412842/330caba8-3ef2-4fd9-87af-719209bf7b99
 
 ## Local Properties Configuration 🧑‍💻
 ### Keystores:
