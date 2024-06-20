@@ -7,6 +7,7 @@ import com.example.feesight_mobile.data.response.BalanceResponse
 import com.example.feesight_mobile.data.response.InvestResponse
 import com.example.feesight_mobile.data.response.LoginResponse
 import com.example.feesight_mobile.data.response.RegisterResponse
+import com.example.feesight_mobile.data.response.SpareMoneyResponse
 import com.example.feesight_mobile.data.response.TransactionRequest
 import com.example.feesight_mobile.data.response.TransactionsResponse
 import retrofit2.Call
@@ -38,4 +39,7 @@ interface ApiService {
 
     @GET("user/balance")
     fun getBalance(@Query("toDate") toDate: String): Call<BalanceResponse>
+
+    @GET("user/spareMoney")
+    fun getSpareMoney(@Query("date") date: String): Call<SpareMoneyResponse>
 }

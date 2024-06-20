@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.feesight_mobile.data.response.BalanceResponse
+import com.example.feesight_mobile.data.response.SpareMoneyResponse
 import com.example.feesight_mobile.data.response.TransactionsResponse
 import com.example.feesight_mobile.data.response.TransactionsResponseItem
 import com.example.feesight_mobile.data.retrofit.ApiConfig
@@ -37,6 +38,12 @@ class CalendarActivity : AppCompatActivity() {
         }
         setupRecyclerView()
 
+        val dateFormat = SimpleDateFormat("yyyy-M-dd", Locale.getDefault())
+        val currentDate = dateFormat.format(Date())
+        fetchTransactionsByDate(currentDate)
+        fetchBalance(currentDate)
+        fetchSpareMoney(currentDate)
+
         // Mendapatkan tanggal dari calendar
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance()
@@ -48,6 +55,7 @@ class CalendarActivity : AppCompatActivity() {
             // Memanggil fungsi fetchTransactionsByDate dengan tanggal yang dipilih
             fetchTransactionsByDate(selectedDate)
             fetchBalance(selectedDate)
+            fetchSpareMoney(selectedDate)
         }
     }
 
@@ -89,14 +97,35 @@ class CalendarActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val balance = response.body()?.balance ?: "RP.0.00"
                     binding.balance.text = "Rp. $balance"
-                    Log.d("HomeFragment", "Balance fetched successfully: $balance")
+                    Log.d("Calendar", "Balance fetched successfully: $balance")
                 } else {
-                    Log.e("HomeFragment", "Error response code: ${response.code()}")
+                    Log.e("Calendar", "Error response code: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<BalanceResponse>, t: Throwable) {
-                Log.e("HomeFragment", "API call failed", t)
+                Log.e("Calendar", "API call failed", t)
+            }
+        })
+    }
+
+    private fun fetchSpareMoney(selectedDate: String) {
+        val apiService = ApiConfig.getApiService()
+
+        val call = apiService.getSpareMoney(selectedDate)
+        call.enqueue(object : Callback<SpareMoneyResponse> {
+            override fun onResponse(call: Call<SpareMoneyResponse>, response: Response<SpareMoneyResponse>) {
+                if (response.isSuccessful) {
+                    val balance = response.body()?.balance ?: "RP.0.00"
+                    binding.balanceProject.text = "Rp. $balance"
+                    Log.d("Calendar", "Spare Money fetched successfully: $balance")
+                } else {
+                    Log.e("Calendar", "Error response code: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<SpareMoneyResponse>, t: Throwable) {
+                Log.e("Calendar", "API call failed", t)
             }
         })
     }
