@@ -32,8 +32,10 @@ class ListInvest : AppCompatActivity() {
     private fun fetchInvestData() {
         showLoading(true)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val currentDate = dateFormat.format(Calendar.getInstance().time) //agar tanggal selalu real-time
-        val request = mapOf("end_date" to currentDate)
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, 1)
+        val getDate = dateFormat.format(calendar.time) // Mengambil tanggal besok
+        val request = mapOf("end_date" to getDate)
         val apiService = ApiConfig.getApiService()
         val call = apiService.predict(request)
 
